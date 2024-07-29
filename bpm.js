@@ -217,27 +217,26 @@ function _fillValuesField(data) {
 }
 
 function _showViewFilesAttachments(files) {
-    console.log("_showViewFilesAttachments");
     console.log("filessssssssssssssssss" + JSON.stringify(files));
 
-    let attachmentsInfo = files.find(item => item.key === "attachmentsInfo").value;
-    // Removendo a parte introdutória
-    attachmentsInfo = attachmentsInfo.replace('FlowList with data: ', '').trim();
-    // Extrair informações com expressão regular
-    const regex = /uploadDate=([^,]+), addedBy=([^,]+), name=([^,]+), id=([^\}]+)/g;
-    let match;
-    const results = [];
+    // A string como recebida pelo console.log
+    let filesString = JSON.parse(JSON.stringify(files)).replace('FlowList with data: ', '').trim();
 
-    while ((match = regex.exec(attachmentsInfo)) !== null) {
-    results.push({
+    // Usar uma expressão regular para extrair os detalhes
+    const regex = /uploadDate=([^,]+), addedBy=([^,]+), name=([^,]+), id=([^\}]+)/g;
+    const results = [];
+    let match;
+
+    while ((match = regex.exec(filesString)) !== null) {
+      results.push({
         uploadDate: match[1].trim(),
         addedBy: match[2].trim(),
         name: match[3].trim(),
         id: match[4].trim()
-    });
+      });
     }
 
-    console.log(`results ${JSON.stringify(results)}` );
+    console.log(`results ${results}`);
 
     $('#wrap-add-file').remove();
 
