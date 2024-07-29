@@ -28,7 +28,6 @@ function _init(data, info) {
             }
 
             _fillValuesField(data);
-            console.log("dataaaaaaa " + JSON.stringify(data))
             _showViewFilesAttachments(data[0].value);
         })
     });
@@ -77,7 +76,6 @@ async function _saveData(data, info) {
         
         if (inputBox != null && inputBox.files.length > 0) {
             try {
-                console.log("inputBox.files[0].name " + inputBox.files[0].name)
                 const etapaUmResult = await _etapaUmApiSenior(inputBox.files[0].name);
                 await _etapaDoisApiSenior(inputBox.files[0], etapaUmResult.uploadUrl);
                 await _etapaTresApiSenior(etapaUmResult.attachment.id);
@@ -217,8 +215,6 @@ function _fillValuesField(data) {
 }
 
 function _showViewFilesAttachments(files) {
-    console.log("filessssssssssssssssss" + JSON.stringify(files));
-
     // A string como recebida pelo console.log
     let filesString = JSON.parse(JSON.stringify(files)).replace('FlowList with data: ', '').trim();
 
@@ -236,13 +232,9 @@ function _showViewFilesAttachments(files) {
       });
     }
 
-    console.log(`results ${results}`);
-
     $('#wrap-add-file').remove();
 
     results.forEach(async function(item) {
-        console.log("result.forEach " + item.id)
-
         let resultApi = await _etapaCincoApiSenior(item.id);
 
         const htmlContent = `
