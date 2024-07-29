@@ -28,6 +28,7 @@ function _init(data, info) {
             }
 
             _fillValuesField(data);
+            console.log("dataaaaaaa " + JSON.stringify(data))
             _showViewFilesAttachments(data[0].value);
         })
     });
@@ -218,7 +219,7 @@ function _fillValuesField(data) {
 function _showViewFilesAttachments(files) {
     console.log("_showViewFilesAttachments");
     console.log("filessssssssssssssssss" + JSON.stringify(files));
-    
+
     const values = files.match(/\[(.*?)\]/)[1];
     const arrayOfString = values.split(',').map(item => item.trim());
     $('#wrap-add-file').remove();
