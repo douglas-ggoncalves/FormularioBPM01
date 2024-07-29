@@ -220,13 +220,31 @@ function _showViewFilesAttachments(files) {
     console.log("_showViewFilesAttachments");
     console.log("filessssssssssssssssss" + JSON.stringify(files));
 
-    const values = files.match(/\[(.*?)\]/)[1];
-    const arrayOfString = values.split(',').map(item => item.trim());
+    let attachmentsInfo = files.find(item => item.key === "attachmentsInfo").value;
+    // Removendo a parte introdutória
+    attachmentsInfo = attachmentsInfo.replace('FlowList with data: ', '').trim();
+    // Extrair informações com expressão regular
+    const regex = /uploadDate=([^,]+), addedBy=([^,]+), name=([^,]+), id=([^\}]+)/g;
+    let match;
+    const results = [];
+
+    while ((match = regex.exec(attachmentsInfo)) !== null) {
+    results.push({
+        uploadDate: match[1].trim(),
+        addedBy: match[2].trim(),
+        name: match[3].trim(),
+        id: match[4].trim()
+    });
+    }
+
+    console.log(`results ${JSON.stringify(results)}` );
+
     $('#wrap-add-file').remove();
 
-    arrayOfString.forEach(async function(item) {
+    results.forEach(async function(item) {
+        console.log("result.forEach " + item.id)
 
-        let resultApi = await _etapaCincoApiSenior(item);
+        let resultApi = await _etapaCincoApiSenior(item.id);
 
         const htmlContent = `
                     <div id="wrap-add-file" class="box-add-file">                           
