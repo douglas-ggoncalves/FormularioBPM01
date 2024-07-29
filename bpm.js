@@ -76,7 +76,8 @@ async function _saveData(data, info) {
         
         if (inputBox != null && inputBox.files.length > 0) {
             try {
-                const etapaUmResult = await _etapaUmApiSenior();
+                console.log("inputBox.files[0].name " + inputBox.files[0].name)
+                const etapaUmResult = await _etapaUmApiSenior(inputBox.files[0].name);
                 await _etapaDoisApiSenior(inputBox.files[0], etapaUmResult.uploadUrl);
                 await _etapaTresApiSenior(etapaUmResult.attachment.id);
                 await _etapaQuatroApiSenior(etapaUmResult.attachment.id);
@@ -257,13 +258,13 @@ function _formatFileToBase64(fileContent) {
 
 
 // Consulta a api da Senior
-async function _etapaUmApiSenior() {
+async function _etapaUmApiSenior(nameFile) {
 
     try {
         const apiUri = "https://api.senior.com.br/platform/workflow/newAttachment";
 
         const bodyToSend = {
-            name: "Logomarca_Buriti.png"
+            name: nameFile
         };
  
         const response = await fetch(apiUri, {
