@@ -216,11 +216,13 @@ function _fillValuesField(data) {
 }
 
 function _showViewFilesAttachments(files) {
+    console.log("files files 0 " + JSON.stringify(files))
     const values = files.match(/\[(.*?)\]/)[1];
     const arrayOfString = values.split(',').map(item => item.trim());
     $('#wrap-add-file').remove();
 
     arrayOfString.forEach(async function(item) {
+
         let resultApi = await _etapaCincoApiSenior(item);
 
         const htmlContent = `
