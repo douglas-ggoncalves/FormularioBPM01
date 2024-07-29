@@ -216,7 +216,9 @@ function _fillValuesField(data) {
 }
 
 function _showViewFilesAttachments(files) {
-    console.log("files files 0 " + JSON.stringify(files))
+    console.log("_showViewFilesAttachments");
+    console.log("filessssssssssssssssss" + JSON.stringify(files));
+    
     const values = files.match(/\[(.*?)\]/)[1];
     const arrayOfString = values.split(',').map(item => item.trim());
     $('#wrap-add-file').remove();
