@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+}
+
+.container-upload-files {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box-add-file {
+    box-sizing: border-box;
+    margin: 0.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-file-input input {
+    /* opacity: 0; */
+    position: absolute;
+    width: 100%;
+}
+
+.file-label {
+    position: relative;
+    border: 1px dashed #e0e0e0;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.box-upload-mb-5 {
+    margin-bottom: 20px;
+}
+
+.form-drop-file,
+.add-new-box {
+    display: block;
+    font-weight: 600;
+    color: #07074d;
+    font-size: 20px;
+    margin-bottom: 8px;
+}  
+
+.form-or {
+    font-weight: 500;
+    font-size: 16px;
+    color: #6b7280;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-browse {
+    font-weight: 500;
+    font-size: 16px;
+    color: #07074d;
+    display: inline-block;
+    padding: 8px 28px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+}
+
+#btn-close-tab-file {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+
+
+
+.file-label {
+    position: relative;
+}
+
+.file-name {
+    font-weight: 500;
+    font-size: 16px;
+    color: #07074d;
+    display: inline-block;
+    margin-top: 8px;
+    width: 150px;
+    word-wrap: break-word;
+}
+
+.file-instructions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
